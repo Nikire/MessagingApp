@@ -1,10 +1,11 @@
 # MessagingApp
+
 Build a full-stack web application for sending and receiving messages.
 
 ## Table of contents
 
 - [Objectives](#Objectives)
-
+- [Instructions](#Instructions)
 
 ## Objectives
 
@@ -39,3 +40,40 @@ Share the source code via a GitHub repository. Include a README file with instru
 - Error handling and validation.
 - UI/UX and overall application design.
 - Bonus points for implementing real-time updates.
+
+## Instructions
+
+To clone the repository locally, follow these steps:
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command:
+  ```bash
+  git clone https://github.com/Nikire/MessagingApp
+  ```
+4. Once the cloning process is complete, navigate into the cloned directory:
+  ```bash
+  cd MessagingApp
+  ```
+5. Follow the backend and frontend setup instructions in their respective sections to set up the development environment.
+
+### Backend setup
+
+To set up the Backend development environment, follow these steps:
+
+1. Navigate to the `Backend` directory:
+  ```bash
+  cd Backend
+  ```
+
+2. Install the required dependencies:
+  ```bash
+  npm install
+  ```
+
+3. Start the Backend server:
+  ```bash
+  npm start
+  ```
+
+The backend server will start running on the port 3001, and you can now proceed with the frontend setup.
