@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BACKEND_ORIGIN } from '../_config';
+import { cleanCookie } from '../utils';
 
 export const login = async (username, password) => {
   try{
@@ -10,6 +11,7 @@ export const login = async (username, password) => {
     return response.data;
   }catch(e){
     console.log(e);
+    cleanCookie("sessionToken");
   }
 };
 
@@ -22,6 +24,7 @@ export const register = async (username, password) => {
     return response.data;
   }catch(e){
     console.log(e);
+    cleanCookie("sessionToken");
   }
 };
 
@@ -37,6 +40,7 @@ export const getUserInfo = async (accessToken) => {
     return response.data;
   }catch(e){
     console.log(e);
+    cleanCookie("sessionToken");
   }
   
 };

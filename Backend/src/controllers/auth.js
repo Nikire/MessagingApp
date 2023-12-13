@@ -78,7 +78,11 @@ const login = (req, res, next) => {
 
 const getUserInfo = (req, res, next) => {
   try{
-    res.status(200).json(req.user);
+    const found = users.find(u => u.username === req.user.username);
+    if (!found){
+      return res.status(404).json({error:true,message:"User information not found."})
+    }
+    res.status(200).json(found);
   }catch (error) {
     next(error);
   }

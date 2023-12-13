@@ -98,3 +98,5 @@ To set up the Backend development environment, follow these steps:
   ```
 
 The frontend server will start running on the port 3000.
+
+**NOTE** Please take in care that both servers need to run at the same time to work properly
