@@ -76,4 +76,12 @@ const login = (req, res, next) => {
   }
 };
 
-module.exports = { register, login };
+const getUserInfo = (req, res, next) => {
+  try{
+    res.status(200).json(req.user);
+  }catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { register, login, getUserInfo};

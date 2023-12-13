@@ -10,18 +10,21 @@ module.exports = {
   authenticateToken: (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-
-    if (!token) {
-      return res.status(401).json({ error: true, message: 'No token provided' });
-    }
-    // I'll normally use dotenv to store a secret key generated with a hash generator but I don't think its needed for this test so I'll just use that string
-    jwt.verify(token, "simulatedsecretkey", (err, { user }) => {
-      if (err) {
-        return res.status(403).json(err);
+    try{
+      if (!token) {
+        return res.status(401).json({ error: true, message: 'No token provided' });
       }
-      req.user = user;
-      next();
-    });
+      // I'll normally use dotenv to store a secret key generated with a hash generator but I don't think its needed for this test so I'll just use that string
+      jwt.verify(token, "simulatedsecretkey", (err, { user }) => {
+        if (err) {
+          return res.status(403).json({error:true, message:err.message});
+        }
+        req.user = user;
+        next();
+      });
+    }catch(error){
+      next(error);
+    }
   },
   validateUser: (req,res,next) => {
     let { username, name, email, password } = req.body;
