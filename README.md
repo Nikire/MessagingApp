@@ -77,3 +77,24 @@ To set up the Backend development environment, follow these steps:
   ```
 
 The backend server will start running on the port 3001, and you can now proceed with the frontend setup.
+
+### Frontend setup
+
+To set up the Backend development environment, follow these steps:
+
+1. Navigate to the `frontend` directory:
+  ```bash
+  cd frontend
+  ```
+
+2. Install the required dependencies:
+  ```bash
+  npm install
+  ```
+
+3. Start the Frontend server:
+  ```bash
+  npm start
+  ```
+
+The frontend server will start running on the port 3000.
