@@ -6,3 +6,11 @@ export async function checkAuth() {
   if(!token) return false;
   return await getUserInfo(token);
 }
+
+export function storeCookie(key,value){
+  Cookies.set(key,value);
+}
+
+export function cleanCookie(key){
+  Cookies.remove(key);
+}

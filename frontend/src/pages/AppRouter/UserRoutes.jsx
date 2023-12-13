@@ -9,11 +9,11 @@ import { useNavigate } from 'react-router-dom';
  * @param {boolean}  "force" = false - Whether to force the component to redirect the user to the login page even if the user is already authenticated.
  * @returns {ReactNode} - The rendered component.
  **/
-const UserRoutes = ({ children, force = false, isAuthenticated = false }) => {
+const UserRoutes = ({ children, force = false, user = false }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (force) {
-      if (!isAuthenticated) {
+      if (!user) {
         navigate('/login');
       }
     }
