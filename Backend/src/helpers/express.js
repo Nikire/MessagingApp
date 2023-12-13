@@ -15,11 +15,11 @@ module.exports = {
         return res.status(401).json({ error: true, message: 'No token provided' });
       }
       // I'll normally use dotenv to store a secret key generated with a hash generator but I don't think its needed for this test so I'll just use that string
-      jwt.verify(token, "simulatedsecretkey", (err, { user }) => {
+      jwt.verify(token, "simulatedsecretkey", (err, payload) => {
         if (err) {
           return res.status(403).json({error:true, message:err.message});
         }
-        req.user = user;
+        req.user = payload.user;
         next();
       });
     }catch(error){
