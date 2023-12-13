@@ -10,7 +10,7 @@ const getAllMessages = (req, res, next) => {
 const createMessage = (req, res, next) => {
   const { message } = req.body;
   let user = req.user;
-  user = {name: user.name, username: user.username};
+  user = {username: user.username};
   try {
     messages.push({user,message})
     res.status(200).json({ message: 'Message created successfully' });

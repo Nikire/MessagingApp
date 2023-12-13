@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 var users = [];
 
 const register = (req, res, next) => {
-  const { email, name, username } = req.body;
+  const { username } = req.body;
   let { password } = req.body;
   try {
-    const found = users.find(u => u.username == username || u.email == email);
+    const found = users.find(u => u.username == username);
     if(found){
-      return res.status(400).json({error:true, message: "Username/email already registered."})
+      return res.status(400).json({error:true, message: "Username already registered."})
     }
     bcrypt.genSalt(10, async (error, salt) => {
       if (error) {
@@ -20,7 +20,7 @@ const register = (req, res, next) => {
           return res.status(400).json(error);
         }
         password = hash;
-        const user = {name, username, email, password};
+        const user = {username, password};
         users.push(user);
         // I'll normally use dotenv to store a secret key generated with a hash generator but I don't think its needed for this test so I'll just use that string
         const accessToken = jwt.sign({ user }, "simulatedsecretkey", {

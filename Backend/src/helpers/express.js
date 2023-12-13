@@ -27,22 +27,12 @@ module.exports = {
     }
   },
   validateUser: (req,res,next) => {
-    let { username, name, email, password } = req.body;
+    let { username, password } = req.body;
     try{
       if (!username || username === '') {
         return res
         .status(400)
         .json({ error: true, message: 'Username must be provided' });
-      }
-      if (!name || name === '') {
-        return res
-        .status(400)
-        .json({ error: true, message: 'Name must be provided' });
-      }
-      if (!email || email === '') {
-        return res
-        .status(400)
-        .json({ error: true, message: 'Email must be provided' });
       }
       if (!password || password === '') {
         return res
@@ -53,8 +43,6 @@ module.exports = {
       //RegEx (add frontend instructions)
       let usernameRegEx = /^[a-zA-Z0-9_]{3,20}$/;
       let passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;
-      let emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      let nameRegEx = /^[a-zA-Z ]{3,25}$/;
 
       if (!usernameRegEx.test(username)) {
         return res
@@ -65,16 +53,6 @@ module.exports = {
         return res
           .status(400)
           .json({ error: true, message: 'Invalid password.' });
-      }
-      if (!emailRegEx.test(email)) {
-        return res
-          .status(400)
-          .json({ error: true, message: 'Invalid email.' });
-      }
-      if (!nameRegEx.test(name)) {
-        return res
-          .status(400)
-          .json({ error: true, message: 'Invalid name.' });
       }
       next();
     }catch(err){
