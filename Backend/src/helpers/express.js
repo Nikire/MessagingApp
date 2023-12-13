@@ -56,12 +56,12 @@ module.exports = {
       if (!usernameRegEx.test(username)) {
         return res
           .status(400)
-          .json({ error: true, message: 'Invalid password.' });
+          .json({ error: true, message: 'Invalid username.' });
       }
       if (!passwordRegEx.test(password)) {
         return res
           .status(400)
-          .json({ error: true, message: 'Invalid username.' });
+          .json({ error: true, message: 'Invalid password.' });
       }
       if (!emailRegEx.test(email)) {
         return res
