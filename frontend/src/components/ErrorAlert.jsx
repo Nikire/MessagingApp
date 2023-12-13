@@ -28,9 +28,6 @@ const ErrorAlert = () => {
     };
   }, []);
 
-
-  // ...
-
     useEffect(() => {
       if (error) {
         // Display error as a toast notification
